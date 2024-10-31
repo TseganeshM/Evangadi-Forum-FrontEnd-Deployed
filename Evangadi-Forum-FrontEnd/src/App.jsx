@@ -1,14 +1,36 @@
-import { useState } from "react";
+import axios from "./API/axiosConfig";
+import Routing from "./Router";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { createContext } from "react";
+import "bootstrap/dist/css/bootstrap.css";
 
-import "./App.css";
+export const AuthContext = createContext();
 
 function App() {
+  const [user, setUser] = useState({});
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  const checkUser = async () => {
+    try {
+      const { data } = await axios.get("/user/checkUser", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      console.log(data);
+      setUser(data);
+    } catch (error) {
+      console.log(error.response);
+      navigate("/");
+    }
+  };
+
+  useEffect(() => {
+    checkUser();
+  }, []);
   return (
-    <>
-      <div>
-        <h3>Evangadi-Forum-FrontEnd</h3>
-      </div>
-    </>
+    <AuthContext.Provider value={{ user, setUser }}>
+      <Routing />
+    </AuthContext.Provider>
   );
 }
 
