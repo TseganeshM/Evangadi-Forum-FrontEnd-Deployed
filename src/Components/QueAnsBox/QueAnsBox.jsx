@@ -2,6 +2,7 @@ import React from "react";
 import classes from "../../Pages/Home/home.module.css";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
+
 function QueAnsBox({ data, content, transition }) {
   console.log(data);
   return (
