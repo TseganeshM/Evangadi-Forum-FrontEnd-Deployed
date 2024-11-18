@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import axios from "../../API/axiosConfig";
 import classes from "./home.module.css";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+
 import { AuthContext } from "../../App";
 import QueAnsBox from "../../Components/QueAnsBox/QueAnsBox";
 import LayOut from "../../Components/Layout/LayOut";
@@ -10,10 +10,11 @@ import Loader from "../../Components/Loader/Loader";
 
 function Home() {
   const { user } = useContext(AuthContext);
-  console.log(user);
+  //console.log(user);
   const [questions, setQuestions] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoadingPage, setIsLoadingPage] = useState(true);
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     const fetchData = async () => {
@@ -46,12 +47,13 @@ function Home() {
     <LayOut>
       <div>
         <div className={classes.container}>
+          {/*rediret to question page*/}
           <div className={classes.header}>
             <Link to="/questions">
               <button className={classes.ask__button}>Ask Question</button>
             </Link>
             <span className={classes.welcome}>
-              Welcome:{" "}
+              Welcome:
               <span className={classes.username}>{user?.username}</span>
             </span>
           </div>
@@ -64,7 +66,6 @@ function Home() {
           />
 
           {/* Rendering filtered questions */}
-
           <div className={classes.question__list}>
             {isLoadingPage ? (
               <Loader />

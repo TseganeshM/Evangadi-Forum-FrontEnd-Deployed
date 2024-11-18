@@ -20,7 +20,7 @@ function App() {
       setUser(data);
     } catch (error) {
       console.log(error.response);
-      navigate("/");
+      //navigate("/");
     }
   };
 

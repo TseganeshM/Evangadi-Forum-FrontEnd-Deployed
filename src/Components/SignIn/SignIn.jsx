@@ -7,14 +7,17 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../App";
 import Error from "../Error/Error";
 import Loader from "../Loader/Loader";
+
 const SignIn = ({ onToggleForm }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { setUser } = useContext(AuthContext);
   const [isAuthorized, setIsAuthorized] = useState("");
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -25,6 +28,7 @@ const SignIn = ({ onToggleForm }) => {
         password,
       });
       console.log(loginData);
+
       // Saving the token in localStorage
       localStorage.setItem("token", loginData.token);
       const userResponse = await axios.get("/user/checkUser", {

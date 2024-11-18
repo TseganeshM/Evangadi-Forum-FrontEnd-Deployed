@@ -23,6 +23,7 @@ const SignUp = ({ onToggleForm }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isPasswordValid, setIsPasswordValid] = useState("");
   const [isUserExists, setIsUserExists] = useState("");
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
