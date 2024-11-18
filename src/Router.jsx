@@ -1,7 +1,7 @@
-import Home from "./Pages/Home/Home";
 import { Route, Routes } from "react-router-dom";
-import  AskQuestion from "./Pages/AskQuestion/AskQuestion"
 import Landing from "./Pages/Landing/Landing";
+import Home from "./Pages/Home/Home";
+import  AskQuestion from "./Pages/AskQuestion/AskQuestion"
 import Answer from "./Pages/Answer/Answer";
 
 

@@ -8,7 +8,8 @@ import "bootstrap/dist/css/bootstrap.css";
 export const AuthContext = createContext();
 
 function App() {
-  const [user, setUser] = useState({});
+  //const [user, setUser] = useState({null});
+  const [user, setUser] = useState(null);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const checkUser = async () => {
@@ -20,7 +21,7 @@ function App() {
       setUser(data);
     } catch (error) {
       console.log(error.response);
-      //navigate("/");
+      navigate("/");
     }
   };
 
